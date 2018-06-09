@@ -28,6 +28,7 @@ public class News {
 
 
 
+
     public String getEarthquakeUrl() {
         return earthquakeUrl;
     }
