@@ -26,13 +26,7 @@ public class News {
         return earthquakeTime;
     }
 
-
-
-
     public String getEarthquakeUrl() {
         return earthquakeUrl;
     }
-
-
-
 }
