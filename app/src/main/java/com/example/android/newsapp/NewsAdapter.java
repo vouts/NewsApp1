@@ -20,12 +20,12 @@ private static final String LOG_TAG = NewsAdapter.class.getSimpleName();
 
 
 
-public NewsAdapter(Activity context, ArrayList<News> earthquakes ) {
+public NewsAdapter(Activity context, ArrayList<News> news ) {
     // Here, we initialize the ArrayAdapter's internal storage for the context and the list.
     // the second argument is used when the ArrayAdapter is populating a single TextView.
     // Because this is a custom adapter for two TextViews and an ImageView, the adapter is not
     // going to use this second argument, so it can be any value. Here, we used 0.
-    super(context, 0, earthquakes);
+    super(context, 0, news);
 }
 
 @NonNull
@@ -38,25 +38,19 @@ public View getView(int position, @Nullable View convertView, @NonNull ViewGroup
     }
 
 
-    News currentEarthquake = getItem(position);
+    News currentNewsArticle = getItem(position);
+
+    TextView titleTextView = listItemView.findViewById(R.id.news_title);
+    titleTextView.setText(String.valueOf(currentNewsArticle.getNewsTitle()));
+
+
+    TextView categoryTextView = listItemView.findViewById(R.id.news_category);
+    categoryTextView.setText(currentNewsArticle.getNewsCategory());
 
 
 
-    TextView magTextView = (TextView) listItemView.findViewById(R.id.earthquake_mag);
-    magTextView.setText(String.valueOf(currentEarthquake.getEarthquakeMag()));
-
-    GradientDrawable magnitudeCircle = (GradientDrawable) magTextView.getBackground();
-
-
-
-
-    TextView placeTextView = (TextView) listItemView.findViewById(R.id.earthquake_place);
-    placeTextView.setText(currentEarthquake.getEarthquakePlace());
-
-
-
-    TextView timeTextView = (TextView) listItemView.findViewById(R.id.earthquake_Time);
-    timeTextView.setText(Long.toString(currentEarthquake.getEarthquakeTime()));
+    TextView authorTextView = listItemView.findViewById(R.id.news_author);
+    authorTextView.setText(currentNewsArticle.getNewsAuhor());
 
 
     // Return the whole list item layout (containing 2 TextViews and an ImageView)

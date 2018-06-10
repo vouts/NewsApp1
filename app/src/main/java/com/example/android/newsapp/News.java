@@ -2,31 +2,30 @@ package com.example.android.newsapp;
 
 public class News {
 
-    private Double earthquakeMag;
-    private String earthquakePlace, earthquakeUrl;
-    Long earthquakeTime;
+    private String newsTitle, newsURL, newsCategory, newsAuhor;
 
-    public News(Double mag, String place, Long time, String url){
-        earthquakeMag = mag;
-        earthquakePlace = place;
-        earthquakeTime = time;
-        earthquakeUrl = url;
-    }
+    public News( String title, String url, String category, String author){
 
-    public Double getEarthquakeMag(){
-        return earthquakeMag;
-    }
-
-    public String getEarthquakePlace() {
-        return earthquakePlace;
+        newsTitle = title;
+        newsURL = url;
+        newsCategory = category;
+        newsAuhor = author;
     }
 
 
-    public Long getEarthquakeTime() {
-        return earthquakeTime;
+    public String getNewsTitle() {
+        return newsTitle;
     }
 
-    public String getEarthquakeUrl() {
-        return earthquakeUrl;
+    public String getNewsUrl() {
+        return newsURL;
+    }
+
+    public String getNewsCategory() {
+        return newsCategory;
+    }
+
+    public String getNewsAuhor() {
+        return newsAuhor;
     }
 }
