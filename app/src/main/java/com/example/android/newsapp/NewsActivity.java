@@ -11,15 +11,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.android.newsapp.News;
-import com.example.android.newsapp.NewsAdapter;
-import com.example.android.newsapp.NewsLoader;
-import com.example.android.newsapp.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +25,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
 
     /** URL for news data from the Guardians dataset */
     private static final String guardian_REQUEST_URL =
-            "https://content.guardianapis.com/search?q=debate&tag=politics/politics&from-date=2014-01-01&api-key=test";
+            "https://content.guardianapis.com/search?q=debate&tag=politics/politics&from-date=2014-01-01&show-tags=contributor&api-key=test";
 
     /**
      * Constant value for the news loader ID. We can choose any integer.
@@ -48,6 +43,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_activity);
+
 
         // Find a reference to the {@link ListView} in the layout
         ListView newsListView = (ListView) findViewById(R.id.list);

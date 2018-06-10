@@ -1,10 +1,8 @@
 package com.example.android.newsapp;
 
 import android.app.Activity;
-import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +13,6 @@ import java.util.ArrayList;
 
 
 public class NewsAdapter extends ArrayAdapter<News> {
-private static final String LOG_TAG = NewsAdapter.class.getSimpleName();
 
 
 
@@ -45,13 +42,15 @@ public View getView(int position, @Nullable View convertView, @NonNull ViewGroup
 
 
     TextView categoryTextView = listItemView.findViewById(R.id.news_category);
-    categoryTextView.setText(currentNewsArticle.getNewsCategory());
-
-
+    categoryTextView.setText(categoryTextView.getText() + " " + currentNewsArticle.getNewsCategory());
 
     TextView authorTextView = listItemView.findViewById(R.id.news_author);
-    authorTextView.setText(currentNewsArticle.getNewsAuhor());
-
+    if(currentNewsArticle.getNewsAuhor()!=null) {
+        authorTextView.setText(authorTextView.getText() + " " + currentNewsArticle.getNewsAuhor());
+    }
+    else {
+        authorTextView.setText("");
+    }
 
     // Return the whole list item layout (containing 2 TextViews and an ImageView)
     // so that it can be shown in the ListView
