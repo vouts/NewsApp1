@@ -121,7 +121,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
         loadingIndicator.setVisibility(View.GONE);
 
         // Set empty state text to display "No news found."
-        newsEmptyStateTextView.setText(R.string.no_earthquakes);
+        newsEmptyStateTextView.setText(R.string.no_news);
 
         // Clear the adapter of previous news data
         newsAdapter.clear();
@@ -130,7 +130,6 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
         // data set. This will trigger the ListView to update.
         if (news != null && !news.isEmpty()) {
             newsAdapter.addAll(news);
-            //updateUi(earthquakes);
         }
     }
 
