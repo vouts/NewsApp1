@@ -27,7 +27,9 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
 
     /** URL for news data from the Guardians dataset */
     private static final String guardian_REQUEST_URL =
-            "https://content.guardianapis.com/search?q=debate&tag=politics/politics&from-date=2014-01-01&show-tags=contributor&api-key=test";
+            "http://content.guardianapis.com/search?q=debates&api-key=test&show-tags=contributor";
+
+
 
     /**
      * Constant value for the news loader ID. We can choose any integer.
