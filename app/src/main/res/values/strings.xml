@@ -48,8 +48,6 @@
         <item>@string/settings_section_world_news_value</item>
     </string-array>
 
-    <string name="interneterrormessages">No internet connection!\nTry Again\nAfter Check internet connection\nthen Reopen the app</string>
-    <string name="contneterrormessages">No news found!\nbecause you lose Internet connection\nTry Again\nAfter Check internet connection\nthen Reopen the app</string>
 
 
     <string name="settings_min_news_label">Minimum News</string>
