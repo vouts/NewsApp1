@@ -124,7 +124,7 @@ public final class QueryUtils {
             // which represents a list of features (or news).
             JSONArray newsArray = response.getJSONArray("results");
 
-            // For each news artcle in thenewsArray, create an {@link News} object
+            // For each news article in the newsArray, create an {@link News} object
             for (int i = 0; i < newsArray.length(); i++) {
 
                 // Get a single news at position i within the list of news
