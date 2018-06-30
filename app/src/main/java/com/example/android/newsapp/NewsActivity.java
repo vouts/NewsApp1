@@ -5,10 +5,12 @@ import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,8 +28,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
     private static final String LOG_TAG = NewsActivity.class.getName();
 
     /** URL for news data from the Guardians dataset */
-    private static final String guardian_REQUEST_URL =
-            "http://content.guardianapis.com/search?q=debates&api-key=test&show-tags=contributor";
+    private static final String guardian_REQUEST_URL = "http://content.guardianapis.com/search?";
 
 
 
@@ -113,7 +114,25 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
     @Override
     public Loader<List<News>> onCreateLoader(int i, Bundle bundle) {
         // Create a new loader for the given URL
-        return new NewsLoader(this, guardian_REQUEST_URL);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        String minNews = sharedPreferences.getString(getString(R.string.settings_min_news_key), getString(R.string.settings_min_news_default));
+        String orderBy = sharedPreferences.getString(getString(R.string.settings_order_by_key), getString(R.string.settings_order_by_default));
+        String section = sharedPreferences.getString(getString(R.string.settings_section_news_key), getString(R.string.settings_section_news_default));
+
+        Uri baseUri = Uri.parse(guardian_REQUEST_URL);
+        Uri.Builder uriBuilder = baseUri.buildUpon();
+
+        uriBuilder.appendQueryParameter("api-key", "test");
+        uriBuilder.appendQueryParameter("show-tags", "contributor");
+        uriBuilder.appendQueryParameter("page-size", minNews);
+        uriBuilder.appendQueryParameter("order-by", orderBy);
+
+        if (!section.equals(getString(R.string.settings_section_news_default))) {
+            uriBuilder.appendQueryParameter("section", section);
+        }
+
+        return new NewsLoader(this, uriBuilder.toString());
     }
 
     @Override
